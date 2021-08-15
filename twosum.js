@@ -86,7 +86,6 @@ const twoSumV3 = function(nums, target) {
     }
   }
 
-  console.log(deltas);
   return []; // indicates target sum not found.
 }
 

@@ -151,4 +151,6 @@ function test() {
   console.log("\n\nSolution to Board")
   prettyPrint(board);
   console.log(isValidSudoku(board));
+
+  console.log("hi");
 }
