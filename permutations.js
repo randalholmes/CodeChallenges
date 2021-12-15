@@ -29,7 +29,7 @@
     the partial permutation creating a full permutation, and then swap the 
     positions of the two elements which we then add to the partial creating
     a second full permutation.
-    
+
 */
 
  const permute = nums => {
@@ -37,9 +37,9 @@
 
     for (let i=0; i<nums.length; ++i) {
         let nextPerm = [nums[0]]
-        let curList = [...nums]
-        curList.shift()
-        permuate(answers, curList, nextPerm)
+        let nextList = [...nums]
+        nextList.shift()
+        permuate(answers, nextList, nextPerm)
         nums.push(nums.shift())  // rotate list
     }
 
