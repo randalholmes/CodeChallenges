@@ -1,18 +1,47 @@
+// Odd Even Linked List.  Leet 328
+
+/*
+    Given the head of a singly linked list, group all the nodes with odd indices together 
+    followed by the nodes with even indices, and return the reordered list.
+
+    The first node is considered odd, and the second node is even, and so on.
+
+    Note that the relative order inside both the even and odd groups should remain 
+    as it was in the input.
+
+    You must solve the problem in O(1) extra space complexity and O(n) time complexity.
 
 
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- *
- *
  * @param {ListNode} head
  * @return {ListNode}
  */
 
+ const oddEvenList = function(head = new Node()) {
+    const oddHead = head
+    head = head.next
+    if (!head) return oddHead
 
+    const evenHead = head
+    head = head.next
+    
+    let curOdd = oddHead
+    let curEven = evenHead
+    
+    while (head) {
+        curOdd.next = head
+        curOdd = curOdd.next
+        head = head.next
+        if (!head) break
+
+        curEven.next = head
+        curEven = curEven.next
+        head = head.next
+    }
+
+    curEven.next = null
+    curOdd.next = evenHead
+    return oddHead
+}
 
 
 
@@ -50,31 +79,7 @@ const printLL = head => {
     } while (head)
 }
 
-const oddEvenList = function(head) {
-    const oddHead = head
-    head = head.next
-    if (!head) return oddHead
 
-    const evenHead = head
-    head = head.next
-    
-    let curOdd = oddHead
-    let curEven = evenHead
-    while (head) {
-        curOdd.next = head
-        curOdd = curOdd.next
-        head = head.next
-        if (!head) break
-
-        curEven.next = head
-        curEven = curEven.next
-        head = head.next
-    }
-
-    curEven.next = null
-    curOdd.next = evenHead
-    return oddHead
-}
 
 // printLL(makeListFromArray([4,7,2,4,9]))
 // printLL(makeList(10))
